@@ -1,5 +1,9 @@
 # Fit y Pastis - Tienda de Suplementación Deportiva
 
+# == IMPORTANTE ==
+# La carpeta de estilos scss se llama /mi_scss/
+# pero esta todo bien enlazado en los htmls
+
 # - Páginas del Proyecto
 
 index.html: Portada con carrusel de ofertas, barra animada de descuentos y productos destacados.
