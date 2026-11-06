@@ -1,0 +1,387 @@
+// ==========================================
+// BASE, THEMING, HEADER & FOOTER
+// ==========================================
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    font-family: $font-body;
+    overflow-x: hidden;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.2s ease;
+
+    &:hover {
+        opacity: 0.85;
+    }
+}
+
+// Scrollbar personalizado
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #181b1d;
+}
+::-webkit-scrollbar-thumb {
+    background: $color-carrusel;
+    border-radius: 4px;
+}
+
+// ------------------------------------------
+// THEMING: Modo Oscuro (por defecto)
+// ------------------------------------------
+[data-bs-theme="dark"] body,
+body.bg-dark-custom {
+    background: linear-gradient(180deg, $color-bg-top 0%, $color-bg-bottom 100%);
+    color: $color-text-main;
+
+    .main-header,
+    .main-footer,
+    footer {
+        background-color: $color-blocks;
+        border-color: rgba($color-borders, 0.4);
+    }
+
+    .logo-box,
+    .logo-link {
+        background-color: #242424;
+        border-color: $color-borders;
+        span, .logo-text { color: $color-text-main; }
+    }
+
+    .search-input {
+        background-color: #242424;
+        border-color: rgba(255, 255, 255, 0.08);
+        color: $color-text-main;
+        &::placeholder { color: $color-text-muted; }
+        &:focus { border-color: $color-carrusel; }
+    }
+
+    .product-card {
+        background-color: $color-cards;
+        border-color: $color-borders;
+    }
+}
+
+// ------------------------------------------
+// HEADER
+// ------------------------------------------
+.main-header {
+    border-bottom: 2px solid $color-carrusel;
+
+    .logo-box,
+    .logo-link {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid $color-borders;
+        border-radius: 8px;
+        padding: 5px 14px;
+        text-align: center;
+
+        span,
+        .logo-text {
+            font-family: $font-headings;
+            font-size: 1.05rem;
+            line-height: 1.1;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+        }
+    }
+
+    .search-bar {
+        position: relative;
+        width: 44%;
+        max-width: 500px;
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: $color-text-muted;
+            font-size: 0.95rem;
+        }
+
+        .search-input {
+            width: 100%;
+            border-radius: 50px;
+            padding: 8px 18px 8px 44px;
+            font-family: $font-body;
+            font-size: 0.78rem;
+            outline: none;
+            transition: border-color 0.2s ease;
+        }
+    }
+
+    .user-nav {
+        display: flex;
+        align-items: center;
+        gap: 1.1rem;
+
+        .nav-icon-link,
+        .menu-btn,
+        .theme-toggle-btn {
+            background: none;
+            border: none;
+            color: $color-text-main;
+            font-size: 1.3rem;
+            cursor: pointer;
+            padding: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease, color 0.2s ease;
+
+            &:hover {
+                color: $color-carrusel;
+                transform: scale(1.1);
+            }
+        }
+
+        .theme-toggle-btn {
+            background-color: rgba($color-borders, 0.25);
+            border: 1px solid $color-borders;
+            border-radius: 50%;
+            width: 38px;
+            height: 38px;
+            font-size: 1.1rem;
+
+            &:hover {
+                background-color: rgba($color-borders, 0.5);
+            }
+        }
+    }
+}
+
+// ------------------------------------------
+// MENÚ LATERAL
+// ------------------------------------------
+.site-menu-open {
+    overflow: hidden;
+}
+
+.site-menu-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 1200;
+    display: flex;
+    justify-content: flex-end;
+    background: rgba(0, 0, 0, 0.62);
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+
+    &.is-open {
+        opacity: 1;
+        pointer-events: auto;
+        visibility: visible;
+
+        .site-menu-panel {
+            transform: translateX(0);
+        }
+    }
+}
+
+.site-menu-panel {
+    width: min(100%, 360px);
+    height: 100%;
+    overflow-y: auto;
+    padding: 24px;
+    background: #171a1d;
+    color: #FFFFFF;
+    border-left: 1px solid $color-borders;
+    box-shadow: -12px 0 36px rgba(0, 0, 0, 0.25);
+    transform: translateX(100%);
+    transition: transform 0.28s ease;
+}
+
+.site-menu-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba($color-borders, 0.4);
+
+    h2 {
+        margin: 0;
+        color: $color-carrusel;
+        font-family: $font-headings;
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+    }
+}
+
+.site-menu-close {
+    display: inline-flex;
+    flex: 0 0 38px;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba($color-borders, 0.65);
+    border-radius: 50%;
+    background: rgba($color-borders, 0.16);
+    color: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:hover,
+    &:focus-visible {
+        background: $color-carrusel;
+        color: #101010;
+    }
+}
+
+.site-menu-navigation {
+    padding-top: 4px;
+}
+
+.site-menu-group {
+    padding: 18px 0;
+    border-bottom: 1px solid rgba($color-borders, 0.3);
+
+    h3 {
+        margin: 0 0 10px;
+        color: $color-carrusel;
+        font-family: $font-headings;
+        font-size: 0.78rem;
+        letter-spacing: 0.5px;
+    }
+}
+
+.site-menu-placeholders {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+        padding: 6px 10px;
+        color: $color-text-muted;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+    }
+}
+
+// ------------------------------------------
+// FOOTER
+// ------------------------------------------
+.main-footer,
+footer {
+    background-color: $color-blocks;
+    border-top: 1px solid rgba($color-borders, 0.4);
+    margin-top: 40px;
+    padding: 28px 32px 36px;
+
+    .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 32px;
+    }
+
+    .footer-social {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding-top: 4px;
+
+        a {
+            color: $color-text-main;
+            font-size: 1.2rem;
+            display: inline-flex;
+            transition: color 0.2s ease;
+
+            &:hover {
+                color: $color-carrusel;
+            }
+        }
+    }
+
+    .footer-column {
+        min-width: 160px;
+
+        h3,
+        .footer-heading {
+            font-family: $font-headings;
+            font-size: 0.85rem;
+            letter-spacing: 0.8px;
+            margin-bottom: 14px;
+            color: $color-text-main;
+            text-transform: uppercase;
+        }
+
+        ul,
+        .footer-list {
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+
+            li {
+                list-style: none !important;
+                margin-bottom: 6px;
+                line-height: 1.3;
+
+                a {
+                    font-family: $font-body;
+                    font-size: 0.65rem;
+                    letter-spacing: 0.5px;
+                    color: $color-text-muted;
+                    text-transform: uppercase;
+                    display: inline-block;
+                    transition: color 0.2s ease;
+
+                    &:hover {
+                        color: $color-carrusel;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// ------------------------------------------
+// BOTÓN FLOTANTE SOPORTE (?)
+// ------------------------------------------
+.floating-help,
+aside {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 100;
+
+    .help-btn {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background-color: transparent;
+        border: 2px solid $color-borders;
+        color: $color-text-main;
+        font-family: $font-headings;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+
+        &:hover {
+            border-color: $color-carrusel;
+            color: $color-carrusel;
+            box-shadow: 0 0 10px rgba(101, 206, 173, 0.4);
+        }
+    }
+}
