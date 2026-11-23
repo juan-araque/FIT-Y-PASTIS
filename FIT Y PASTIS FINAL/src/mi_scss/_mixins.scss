@@ -1,0 +1,22 @@
+// ==========================================
+// MIXINS & ANIMACIONES
+// ==========================================
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin transition-standard($prop: all, $time: 0.25s, $ease: ease) {
+    transition: $prop $time $ease;
+}
+
+// Animación continua para el ticker de descuentos
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}

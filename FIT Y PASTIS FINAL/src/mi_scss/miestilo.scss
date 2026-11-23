@@ -1,0 +1,20 @@
+// ======================================================
+// FIT Y PASTIS - ARCHIVO MAESTRO SASS
+// Compila automáticamente a: miestilo.css
+// ======================================================
+
+// 1. Tokens de diseño y funciones/animaciones
+@import "variables";
+@import "mixins";
+
+// 2. Estructura base, temas y envoltorio común
+@import "layout";
+
+// 3. Componentes reutilizables (Cards, Grids, Ticker)
+@import "components";
+
+// 4. Secciones y vistas específicas (Hero, Cart, Profile, Modal)
+@import "views";
+
+// 5. Overrides del tema claro (contraste y accesibilidad)
+@import "theme-light";
