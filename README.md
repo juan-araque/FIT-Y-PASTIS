@@ -58,3 +58,4 @@ Capturas de pantalla de la validación sin errores:
 
 5. Validación CSS (miestilo.css)
 <img width="1917" height="867" alt="Captura de pantalla 2026-11-06 125203" src="https://github.com/user-attachments/assets/641807fc-8fd5-4464-9ff2-f394c3b84e51" />
+test pr
