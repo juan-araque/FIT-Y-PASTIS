@@ -8,7 +8,7 @@
 | `pexels-mujer.jpg` | Pexels — https://www.pexels.com | **Licencia Pexels / CC0** |
 | `pexels-protein.jpg` | Pexels — https://www.pexels.com | **Licencia Pexels / CC0** |
 | `logo.svg` | SVG Repo — https://www.svgrepo.com | **CC0 / Dominio Público** |
-| `Video-Gym.mp4` | Pexels Videos — https://www.pexels.com/videos | **Licencia Pexels** |
+| `Video-Gym.mp4` | Pexels Videos — https://www.pexels.com/videos | **Licencia Pexels / CC0** |
 | `ambiente.mp3` | Freesound / Pixabay Audio — https://freesound.org/people/artesmediales/sounds/337465/ | **CC0 / CC BY 4.0** |
 
 ---
